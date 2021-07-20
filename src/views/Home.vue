@@ -19,7 +19,7 @@
           title="Product Image"
         />
       </p>
-      <p>{{ product.price }}</p>
+      <p>${{ product.price }}</p>
       <button v-on:click="showProduct(product)">Update Product</button>
       <hr />
     </div>
@@ -37,6 +37,9 @@
         <p>Price: <input type="text" v-model="currentProduct.price" /></p>
         <button v-on:click="updateProduct(currentProduct)">Update</button>
         <button>Close</button>
+        <button v-on:click="destroyProduct(currentProduct)">
+          Delete Product
+        </button>
       </form>
     </dialog>
   </div>
@@ -100,6 +103,17 @@ export default {
         .patch("http://localhost:3000/products/" + editParams.id, editParams)
         .then((response) => {
           console.log(response.data);
+        });
+    },
+    destroyProduct: function (theProduct) {
+      console.log("destroying product...");
+      axios
+        .delete(`http://localhost:3000/products/${theProduct.id}`)
+        .then((response) => {
+          console.log(response.data);
+          var index = this.products.indexOf(theProduct);
+          console.log(index);
+          this.products.splice(index, 1);
         });
     },
   },
