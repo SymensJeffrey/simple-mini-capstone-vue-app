@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">Simple Mini Capstone</a>
         <button
@@ -30,4 +30,5 @@
   </div>
 </template>
 
-<style></style>
+<style>
+</style>
