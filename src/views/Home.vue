@@ -9,22 +9,23 @@
     <p>Price: <input type="number" v-model="newProductParams.price" /></p>
     <button v-on:click="createProduct()">Add New Product</button>
     <hr />
-    <div
-      class="card"
-      v-for="product in products"
-      v-bind:key="product.id"
-      style="width: 18rem"
-    >
-      <img v-bind:src="product.image_url" class="card-img-top" alt="..." />
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div class="row">
+      <div
+        class="card col-md-3"
+        v-for="product in products"
+        v-bind:key="product.id"
+      >
+        <img v-bind:src="product.image_url" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">{{ product.description }}.</p>
+          <button class="btn btn-primary" v-on:click="showProduct(product)">
+            Update Product
+          </button>
+        </div>
       </div>
     </div>
+
     <dialog id="product-details">
       <form method="dialog">
         <p>hello</p>
